@@ -22,7 +22,10 @@ function updateCounter() {
 requestAnimationFrame(updateCounter);
 
 // Make floating icon draggable
-const makeDraggable = (element) => {
+const floatingIcon = document.getElementById('floatingIcon');
+const visitorCounter = document.getElementById('visitorCounter');
+
+function makeDraggable(element) {
     element.addEventListener('touchstart', function(e) {
         let shiftX = e.touches[0].clientX - element.getBoundingClientRect().left;
         let shiftY = e.touches[0].clientY - element.getBoundingClientRect().top;
@@ -72,7 +75,7 @@ const makeDraggable = (element) => {
             return false;
         });
     });
-};
+}
 
-makeDraggable(document.getElementById('floatingIcon'));
-makeDraggable(document.getElementById('visitorCounter'));
+makeDraggable(floatingIcon);
+makeDraggable(visitorCounter);
