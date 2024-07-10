@@ -2,7 +2,7 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #ff0000; /* hot red */
+    background-color: #000000; /* Full black */
     color: #ffffff;
     margin: 0;
     padding: 0;
@@ -100,6 +100,9 @@ button:hover {
     border-radius: 10px;
     font-size: 14px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 body .draggable {

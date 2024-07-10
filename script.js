@@ -22,54 +22,57 @@ function updateCounter() {
 requestAnimationFrame(updateCounter);
 
 // Make floating icon draggable
-const floatingIcon = document.getElementById('floatingIcon');
+const makeDraggable = (element) => {
+    element.addEventListener('touchstart', function(e) {
+        let shiftX = e.touches[0].clientX - element.getBoundingClientRect().left;
+        let shiftY = e.touches[0].clientY - element.getBoundingClientRect().top;
 
-floatingIcon.addEventListener('touchstart', function(e) {
-    let shiftX = e.touches[0].clientX - floatingIcon.getBoundingClientRect().left;
-    let shiftY = e.touches[0].clientY - floatingIcon.getBoundingClientRect().top;
+        function moveAt(pageX, pageY) {
+            element.style.left = pageX - shiftX + 'px';
+            element.style.top = pageY - shiftY + 'px';
+        }
 
-    function moveAt(pageX, pageY) {
-        floatingIcon.style.left = pageX - shiftX + 'px';
-        floatingIcon.style.top = pageY - shiftY + 'px';
-    }
+        function onTouchMove(e) {
+            moveAt(e.touches[0].pageX, e.touches[0].pageY);
+        }
 
-    function onTouchMove(e) {
-        moveAt(e.touches[0].pageX, e.touches[0].pageY);
-    }
+        document.addEventListener('touchmove', onTouchMove);
 
-    document.addEventListener('touchmove', onTouchMove);
+        element.addEventListener('touchend', function() {
+            document.removeEventListener('touchmove', onTouchMove);
+        });
 
-    floatingIcon.addEventListener('touchend', function() {
-        document.removeEventListener('touchmove', onTouchMove);
+        element.addEventListener('dragstart', function() {
+            return false;
+        });
     });
 
-    floatingIcon.addEventListener('dragstart', function() {
-        return false;
+    element.addEventListener('mousedown', function(e) {
+        element.classList.add('draggable');
+        let shiftX = e.clientX - element.getBoundingClientRect().left;
+        let shiftY = e.clientY - element.getBoundingClientRect().top;
+
+        function moveAt(pageX, pageY) {
+            element.style.left = pageX - shiftX + 'px';
+            element.style.top = pageY - shiftY + 'px';
+        }
+
+        function onMouseMove(e) {
+            moveAt(e.pageX, e.pageY);
+        }
+
+        document.addEventListener('mousemove', onMouseMove);
+
+        element.addEventListener('mouseup', function() {
+            document.removeEventListener('mousemove', onMouseMove);
+            element.classList.remove('draggable');
+        });
+
+        element.addEventListener('dragstart', function() {
+            return false;
+        });
     });
-});
+};
 
-floatingIcon.addEventListener('mousedown', function(e) {
-    floatingIcon.classList.add('draggable');
-    let shiftX = e.clientX - floatingIcon.getBoundingClientRect().left;
-    let shiftY = e.clientY - floatingIcon.getBoundingClientRect().top;
-
-    function moveAt(pageX, pageY) {
-        floatingIcon.style.left = pageX - shiftX + 'px';
-        floatingIcon.style.top = pageY - shiftY + 'px';
-    }
-
-    function onMouseMove(e) {
-        moveAt(e.pageX, e.pageY);
-    }
-
-    document.addEventListener('mousemove', onMouseMove);
-
-    floatingIcon.addEventListener('mouseup', function() {
-        document.removeEventListener('mousemove', onMouseMove);
-        floatingIcon.classList.remove('draggable');
-    });
-
-    floatingIcon.addEventListener('dragstart', function() {
-        return false;
-    });
-});
+makeDraggable(document.getElementById('floatingIcon'));
+makeDraggable(document.getElementById('visitorCounter'));
