@@ -2,7 +2,7 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #000000; /* black */
+    background-color: #000000; /* full black */
     color: #ffffff;
     margin: 0;
     padding: 0;
@@ -61,7 +61,7 @@ button:hover {
 
 .floating-icon {
     position: fixed;
-    bottom: 100px;
+    bottom: 20px;
     right: 20px;
     background-color: #00e6e6;
     border-radius: 50%;
@@ -79,7 +79,7 @@ button:hover {
     -webkit-user-drag: none;
 }
 
-.floating-icon span {
+.floating-icon span, .floating-icon a {
     color: #000;
     font-size: 12px;
     text-align: center;
@@ -88,19 +88,6 @@ button:hover {
 
 .floating-icon:hover {
     background-color: #00b3b3;
-}
-
-.visitor-counter {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background-color: #00e6e6;
-    color: #000;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 12px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
 }
 
 body .draggable {
@@ -125,12 +112,7 @@ body .draggable {
         height: 60px;
     }
 
-    .floating-icon span {
+    .floating-icon span, .floating-icon a {
         font-size: 10px;
-    }
-
-    .visitor-counter {
-        font-size: 10px;
-        padding: 5px 10px;
     }
 }

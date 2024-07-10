@@ -2,7 +2,7 @@ document.getElementById('startJourneyBtn').addEventListener('click', function() 
     window.location.href = 'https://sites.google.com/view/mgkvpmasscom/home-page';
 });
 
-document.getElementById('floatingIcon').addEventListener('click', function() {
+document.getElementById('fillFormIcon').addEventListener('click', function() {
     window.open('https://docs.google.com/forms/d/e/1FAIpQLSdzA2gaJ9mEVTTGaaJpSD3Xh1XzDyYuJGWx39lQJoq-LalSqg/viewform?usp=sf_link', '_blank');
 });
 
@@ -21,18 +21,17 @@ function updateCounter() {
 
 requestAnimationFrame(updateCounter);
 
-// Make floating icon draggable
-const floatingIcon = document.getElementById('floatingIcon');
-const visitorCounter = document.getElementById('visitorCounter');
+// Make icons draggable
+const icons = document.querySelectorAll('.floating-icon');
 
-function makeDraggable(element) {
-    element.addEventListener('touchstart', function(e) {
-        let shiftX = e.touches[0].clientX - element.getBoundingClientRect().left;
-        let shiftY = e.touches[0].clientY - element.getBoundingClientRect().top;
+icons.forEach(icon => {
+    icon.addEventListener('touchstart', function(e) {
+        let shiftX = e.touches[0].clientX - icon.getBoundingClientRect().left;
+        let shiftY = e.touches[0].clientY - icon.getBoundingClientRect().top;
 
         function moveAt(pageX, pageY) {
-            element.style.left = pageX - shiftX + 'px';
-            element.style.top = pageY - shiftY + 'px';
+            icon.style.left = pageX - shiftX + 'px';
+            icon.style.top = pageY - shiftY + 'px';
         }
 
         function onTouchMove(e) {
@@ -41,23 +40,23 @@ function makeDraggable(element) {
 
         document.addEventListener('touchmove', onTouchMove);
 
-        element.addEventListener('touchend', function() {
+        icon.addEventListener('touchend', function() {
             document.removeEventListener('touchmove', onTouchMove);
         });
 
-        element.addEventListener('dragstart', function() {
+        icon.addEventListener('dragstart', function() {
             return false;
         });
     });
 
-    element.addEventListener('mousedown', function(e) {
-        element.classList.add('draggable');
-        let shiftX = e.clientX - element.getBoundingClientRect().left;
-        let shiftY = e.clientY - element.getBoundingClientRect().top;
+    icon.addEventListener('mousedown', function(e) {
+        icon.classList.add('draggable');
+        let shiftX = e.clientX - icon.getBoundingClientRect().left;
+        let shiftY = e.clientY - icon.getBoundingClientRect().top;
 
         function moveAt(pageX, pageY) {
-            element.style.left = pageX - shiftX + 'px';
-            element.style.top = pageY - shiftY + 'px';
+            icon.style.left = pageX - shiftX + 'px';
+            icon.style.top = pageY - shiftY + 'px';
         }
 
         function onMouseMove(e) {
@@ -66,16 +65,13 @@ function makeDraggable(element) {
 
         document.addEventListener('mousemove', onMouseMove);
 
-        element.addEventListener('mouseup', function() {
+        icon.addEventListener('mouseup', function() {
             document.removeEventListener('mousemove', onMouseMove);
-            element.classList.remove('draggable');
+            icon.classList.remove('draggable');
         });
 
-        element.addEventListener('dragstart', function() {
+        icon.addEventListener('dragstart', function() {
             return false;
         });
     });
-}
-
-makeDraggable(floatingIcon);
-makeDraggable(visitorCounter);
+});
