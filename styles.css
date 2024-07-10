@@ -11,7 +11,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .container {
@@ -23,6 +23,7 @@ body {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
     margin-bottom: 20px;
+    overflow: auto;
 }
 
 .logo {
@@ -103,4 +104,31 @@ button:hover {
 
 body .draggable {
     cursor: move;
+}
+
+@media (max-width: 600px) {
+    .logo {
+        width: 100px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+
+    .floating-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .floating-icon span {
+        font-size: 10px;
+    }
+
+    .visitor-counter {
+        font-size: 12px;
+    }
 }
