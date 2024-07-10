@@ -21,10 +21,8 @@ function updateCounter() {
 
 requestAnimationFrame(updateCounter);
 
-// Make icons draggable
-const icons = document.querySelectorAll('.floating-icon');
-
-icons.forEach(icon => {
+// Make floating icons draggable
+function makeDraggable(icon) {
     icon.addEventListener('touchstart', function(e) {
         let shiftX = e.touches[0].clientX - icon.getBoundingClientRect().left;
         let shiftY = e.touches[0].clientY - icon.getBoundingClientRect().top;
@@ -74,4 +72,8 @@ icons.forEach(icon => {
             return false;
         });
     });
-});
+}
+
+makeDraggable(document.getElementById('fillFormIcon'));
+makeDraggable(document.getElementById('communityIcon'));
+makeDraggable(document.getElementById('visitorIcon'));
