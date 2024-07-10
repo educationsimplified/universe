@@ -2,8 +2,7 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background: url('https://images.unsplash.com/photo-1542219551-7bf74e7d3b1d') no-repeat center center fixed; 
-    background-size: cover;
+    background-color: #000;
     color: #ffffff;
     margin: 0;
     padding: 0;
@@ -23,6 +22,12 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
     margin-bottom: 20px;
 }
 
@@ -51,43 +56,6 @@ button {
 button:hover {
     background-color: #00b3b3;
     transform: scale(1.05);
-}
-
-.modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1; 
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%; 
-    overflow: auto; 
-    background-color: rgba(0, 0, 0, 0.8); 
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; 
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 700px; 
-    position: relative;
-    border-radius: 10px;
-}
-
-.closeBtn {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.closeBtn:hover,
-.closeBtn:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
 }
 
 .floating-icon {
@@ -119,30 +87,6 @@ button:hover {
 
 .floating-icon:hover {
     background-color: #00b3b3;
-}
-
-.community-icon {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-}
-
-.community-icon img {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 5px;
-}
-
-.community-icon span {
-    background-color: #00e6e6;
-    color: #000;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 12px;
 }
 
 .visitor-counter {
