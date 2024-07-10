@@ -2,7 +2,7 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #000;
+    background-color: #ff0000; /* hot red */
     color: #ffffff;
     margin: 0;
     padding: 0;
@@ -26,7 +26,7 @@ body {
 }
 
 .logo {
-    width: 100px;
+    width: 150px; /* increased size */
     height: auto;
     margin-bottom: 20px;
 }
