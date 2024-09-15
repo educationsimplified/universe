@@ -29,7 +29,7 @@ body {
 }
 
 .logo {
-    width: 150px; /* increased size */
+    width: 150px;
     height: auto;
     margin-bottom: 20px;
 }
@@ -59,6 +59,15 @@ button {
 button:hover {
     background-color: #00b3b3;
     transform: scale(1.05);
+}
+
+/* Added glow effect to the button */
+.glow-button {
+    box-shadow: 0 0 20px #00e6e6, 0 0 40px #00e6e6, 0 0 60px #00e6e6;
+}
+
+.glow-button:hover {
+    box-shadow: 0 0 25px #00b3b3, 0 0 50px #00b3b3, 0 0 75px #00b3b3;
 }
 
 .floating-icon {
