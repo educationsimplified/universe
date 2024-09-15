@@ -2,15 +2,17 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #000000; /* black */
-    color: #ffffff;
     margin: 0;
     padding: 0;
+    background-image: url('https://t3.ftcdn.net/jpg/05/66/39/78/360_F_566397830_Eyld3KDOWRcqsQUWuZmC94jiiyud2Vv1.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    color: #ffffff;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     overflow: auto;
 }
 
