@@ -1,5 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+/* Notification Styles */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+    width: 350px;
+}
+
+.notification-image {
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+}
+
+.notification-text {
+    flex-grow: 1;
+}
+
+.notification-link {
+    display: none;
+}
+
+.close-btn {
+    color: red;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.close-btn:hover {
+    color: darkred;
+}
+
+/* Add other existing CSS here */
+
+
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
