@@ -46,13 +46,13 @@ function makeDraggable(icon) {
         let shiftX = e.touches[0].clientX - icon.getBoundingClientRect().left;
         let shiftY = e.touches[0].clientY - icon.getBoundingClientRect().top;
 
-        function moveAt(pageX, pageY) {
-            icon.style.left = pageX - shiftX + 'px';
-            icon.style.top = pageY - shiftY + 'px';
+        function moveAt(clientX, clientY) {
+            icon.style.left = clientX - shiftX + 'px';
+            icon.style.top = clientY - shiftY + 'px';
         }
 
         function onTouchMove(e) {
-            moveAt(e.touches[0].pageX, e.touches[0].pageY);
+            moveAt(e.touches[0].clientX, e.touches[0].clientY);
         }
 
         document.addEventListener('touchmove', onTouchMove);
@@ -60,37 +60,11 @@ function makeDraggable(icon) {
         icon.addEventListener('touchend', function() {
             document.removeEventListener('touchmove', onTouchMove);
         });
-
-        icon.addEventListener('dragstart', function() {
-            return false;
-        });
     });
 
-    icon.addEventListener('mousedown', function(e) {
-        icon.classList.add('draggable');
-        let shiftX = e.clientX - icon.getBoundingClientRect().left;
-        let shiftY = e.clientY - icon.getBoundingClientRect().top;
-
-        function moveAt(pageX, pageY) {
-            icon.style.left = pageX - shiftX + 'px';
-            icon.style.top = pageY - shiftY + 'px';
-        }
-
-        function onMouseMove(e) {
-            moveAt(e.pageX, e.pageY);
-        }
-
-        document.addEventListener('mousemove', onMouseMove);
-
-        icon.addEventListener('mouseup', function() {
-            document.removeEventListener('mousemove', onMouseMove);
-            icon.classList.remove('draggable');
-        });
-
-        icon.addEventListener('dragstart', function() {
-            return false;
-        });
-    });
+    icon.ondragstart = function() {
+        return false;
+    };
 }
 
 makeDraggable(document.getElementById('fillFormIcon'));
