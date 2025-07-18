@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <!-- Google Site Verification & AdSense - Copied from GALLERY.HTML -->
+    <meta name="google-site-verification" content="l9l5QvjFSakUCbRz6lC-X-TfGQJOFxEbz-_iZQOJ35c" />
+    <meta name="google-adsense-account" content="ca-pub-4074130011096587">
+    <meta name="google-site-verification" content="qSZcROSBW4sFubwNpIYlMwvNYbQUA_2svJFPt3hfxls" />
+    <title>Welcome to the Meta Universe of Education</title>
+    <!-- Meta Description & Keywords - Adapted for Home Page -->
+    <meta name="description" content="Explore free and affordable education solutions for Journalism & Mass Communication students, including study materials, notes, and career guidance by Uzair Sir. Discover delicious food for hostelers and unofficial college merchandise.">
+    <meta name="keywords" content="journalism, mass communication, MGKVP, IIMC, UPSC, CAT, competitive exams, study materials, college notes, career guidance, Uzair Sir, hostel food, college merchandise, Uzair B2B, education portal">
+
+    <!-- Favicon & Apple Touch Icon - Copied from GALLERY.HTML (assuming assets folder exists) -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons (if used in other parts of your site, though not explicitly in this HTML snippet) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <script>
+        // Tailwind Configuration - Copied from GALLERY.HTML
+        tailwind.config = {
+            darkMode: 'class', // Enable dark mode with 'class' strategy
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00e1ff', // Light blue/cyan
+                        secondary: '#0032e6', // Darker blue
+                        darkBg: '#121212', // Very dark background
+                        darkCard: '#1a1a1a', // Slightly lighter dark card background
+                        lightBg: '#f0f2f5', // Light gray background
+                        lightCard: '#ffffff', // White card background
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom styles for the theme toggle icon - Copied from GALLERY.HTML */
+        .theme-toggle-button {
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+        .theme-toggle-button:hover {
+            transform: scale(1.1);
+        }
+
+        /* Custom glow effect for button (since Tailwind doesn't have direct glow shadows) */
+        .glow-button {
+            box-shadow: 0 0 20px rgba(0, 225, 255, 0.7), 0 0 40px rgba(0, 225, 255, 0.5), 0 0 60px rgba(0, 225, 255, 0.3);
+        }
+
+        .glow-button:hover {
+            box-shadow: 0 0 25px rgba(0, 225, 255, 0.9), 0 0 50px rgba(0, 225, 255, 0.7), 0 0 75px rgba(0, 225, 255, 0.5);
+        }
+
+        /* Floating icon base styles */
+        .floating-icon {
+            position: fixed;
+            background-color: theme('colors.secondary'); /* Using secondary for consistency */
+            border-radius: 9999px; /* full rounded */
+            width: 80px;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 50, 230, 0.8); /* Glow using secondary color */
+            transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+            text-align: center;
+            padding: 8px; /* Adjusted padding */
+            user-select: none;
+            -webkit-user-drag: none;
+            z-index: 50; /* Ensure it's above other content */
+        }
+
+        .floating-icon:hover {
+            background-color: theme('colors.primary'); /* Primary on hover */
+            box-shadow: 0 0 15px rgba(0, 225, 255, 0.9); /* Stronger glow on hover */
+            transform: scale(1.05);
+        }
+
+        .floating-icon span, .floating-icon a span {
+            color: theme('colors.white');
+            font-size: 0.875rem; /* text-sm */
+            font-weight: 600; /* font-semibold */
+            text-align: center;
+            white-space: normal;
+            line-height: 1.2;
+        }
+
+        .floating-icon a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            text-decoration: none; /* Remove underline from link */
+        }
+
+        /* Specific positioning for floating icons */
+        #fillFormIcon {
+            bottom: 100px; /* Adjusted from original to stack better */
+            right: 20px;
+        }
+
+        #communityIcon {
+            bottom: 190px; /* Adjusted to stack above fillFormIcon */
+            right: 20px;
+        }
+
+        #visitorIcon {
+            bottom: 20px; /* Lowest icon */
+            right: 20px;
+        }
+
+        /* Push Notification Styles */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Adjust for centering */
+            background-color: theme('colors.primary'); /* Using primary color for notification */
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+            width: calc(100% - 40px); /* Full width minus padding */
+            max-width: 400px; /* Max width for larger screens */
+            transition: all 0.5s ease-in-out;
+            border: 2px solid theme('colors.secondary'); /* Add border */
+        }
+
+        .notification-image {
+            width: 60px;
+            height: 60px;
+            margin-right: 15px;
+            border-radius: 8px; /* Rounded corners for image */
+            object-fit: cover;
+        }
+
+        .notification-text {
+            flex-grow: 1;
+            color: theme('colors.darkBg'); /* Ensure text is visible on primary background */
+            font-weight: 500;
+        }
+
+        .notification-text p {
+            margin-bottom: 5px; /* Space between paragraphs */
+            font-size: 0.95rem;
+            color: theme('colors.darkBg'); /* Override global p color for notification text */
+        }
+
+        .notification-link {
+            position: absolute; /* Make the entire notification clickable */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1; /* Below close button */
+            cursor: pointer;
+        }
+
+        .notification .close-btn { /* Specific styles for notification's close button */
+            position: relative; /* Override fixed positioning */
+            top: auto;
+            right: auto;
+            color: theme('colors.red.600');
+            font-size: 1.5rem; /* text-xl */
+            cursor: pointer;
+            margin-left: 10px;
+            background: none;
+            border: none;
+            border-radius: 0;
+            width: auto;
+            height: auto;
+            display: block; /* Ensure it's not flex item */
+            z-index: 2; /* Above the link overlay */
+        }
+
+        .notification .close-btn:hover {
+            color: theme('colors.red.800');
+            transform: none; /* No scale transform on this specific close button */
+            box-shadow: none;
+        }
+
+        /* Draggable class for cursor */
+        body .draggable {
+            cursor: grab;
+        }
+        body .draggable:active {
+            cursor: grabbing;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+
+            .logo {
+                width: 100px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+
+            .floating-icon {
+                width: 60px;
+                height: 60px;
+                padding: 5px;
+            }
+
+            .floating-icon span, .floating-icon a span {
+                font-size: 0.75rem; /* text-xs */
+            }
+
+            #fillFormIcon {
+                bottom: 80px;
+                right: 10px;
+            }
+
+            #communityIcon {
+                bottom: 150px;
+                right: 10px;
+            }
+
+            #visitorIcon {
+                bottom: 10px;
+                right: 10px;
+            }
+
+            .notification {
+                width: calc(100% - 20px);
+                bottom: 10px;
+                padding: 10px;
+            }
+
+            .notification-image {
+                width: 50px;
+                height: 50px;
+                margin-right: 10px;
+            }
+
+            .notification-text p {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-lightBg text-gray-900 transition-colors duration-300 dark:bg-darkBg dark:text-white font-sans flex flex-col min-h-screen">
+    <!-- Navigation Bar - Copied and adapted from GALLERY.HTML -->
+    <nav class="bg-darkBg p-4 shadow-lg border-b-2 border-primary dark:bg-darkBg dark:border-primary">
+        <div class="container mx-auto flex justify-between items-center">
+            <a class="text-white text-2xl font-bold tracking-wide transition-colors duration-300 hover:text-primary" href="https://uzairb2b.github.io/home/index.html">EDUCATION SIMPLIFIED</a>
+            <button id="themeToggle" class="theme-toggle-button text-white text-2xl focus:outline-none">
+                ☀️ <!-- Initial state, updated by JS -->
+            </button>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb Navigation - Added for consistency -->
+    <div class="container mx-auto mt-6 px-4">
+        <nav aria-label="breadcrumb">
+            <ol class="flex space-x-2 text-gray-600 dark:text-gray-300">
+                <li class="breadcrumb-item"><a href="index.html" class="text-blue-600 hover:underline dark:text-blue-400">Home</a></li>
+                <li class="breadcrumb-item active text-primary font-semibold" aria-current="page">Study Material</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content-wrapper flex-grow flex items-center justify-center p-5">
+        <div class="container text-center max-w-4xl p-8 rounded-lg shadow-xl backdrop-blur-md mx-auto my-8
+                    bg-lightCard dark:bg-darkCard border border-gray-200 dark:border-gray-700">
+            <a href="https://www.instagram.com/uzairvibes?utm_source=qr&igsh=MXEwczdtd290aXl0Zw==" target="_blank">
+                <img src="EDUCATION SIMPLIFIED INDIA.png" onerror="this.src='20250125_115304.png'" alt="Education Simplified Logo" class="w-36 h-auto mb-5 mx-auto rounded-full shadow-md">
+            </a>
+            <h1 class="text-3xl md:text-4xl font-extrabold mb-5 text-primary">Welcome Students to EDUCATION SIMPLIFIED</h1>
+            <p class="text-lg md:text-xl leading-relaxed mb-5 text-gray-700 dark:text-gray-300">If you want to improve your skills or prepare for competitive exams like IIMC, UPSC, CAT, and more, <strong class="text-primary">Uzair Sir</strong> offers free and affordable solutions just for you. Whether you need study materials, college notes, or guidance, we have everything you need to succeed. In addition to education, I’ve also started my own restaurant, specially designed for hostelers! If you’re tired of mess food and craving something delicious, you can order tasty meals from my restaurant at amazing discounts. That’s not all! If you’re looking to show your college spirit, I’ve created an online unofficial college clothing store. You’ll find t-shirts, hoodies, and other cool merch to showcase your pride.</p>
+            <p class="text-lg md:text-xl leading-relaxed mb-5 text-gray-600 dark:text-gray-400 italic">अगर आप अपने स्किल्स को बेहतर करना चाहते हैं या आईआईएमसी, यूपीएससी, कैट जैसे प्रतियोगी परीक्षाओं की तैयारी कर रहे हैं, तो उज़ैर सर आपके लिए एक फ्री और किफ़ायती समाधान लेकर आए हैं। चाहे आपको स्टडी मटीरियल चाहिए या कॉलेज नोट्स, यहाँ सब कुछ मिलेगा। इसके साथ ही, मैंने खासतौर पर हॉस्टलर्स के लिए अपना रेस्टोरेंट भी शुरू किया है। अगर आप मेस के खाने से बोर हो चुके हैं और कुछ स्वादिष्ट खाना चाहते हैं, तो मेरे रेस्टोरेंट से डिलीशियस मील्स ऑर्डर करें और ढेर सारे डिस्काउंट पाएं। और हां, अगर आप अपने कॉलेज प्राइड को दिखाना चाहते हैं, तो मैंने एक ऑनलाइन अनऑफिशियल कॉलेज क्लोथिंग स्टोर भी शुरू किया है। यहां आपको टी-शर्ट, हुडीज़ और बहुत कुछ मिलेगा। पढ़ाई, खाना और कॉलेज प्राइड—सबकुछ एक ही जगह पर। अपनी कॉलेज लाइफ को शानदार बनाएं। नीचे दिए लिंक पर क्लिक करें और देखें!</p>
+            <button id="startJourneyBtn" class="bg-primary text-darkBg font-bold py-3 px-6 rounded-lg cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 glow-button">Click to Start Your Journey</button>
+        </div>
+    </div>
+
+    <!-- Floating Icons -->
+    <div class="floating-icon" id="fillFormIcon">
+        <span>Fill the Form</span>
+    </div>
+
+    <div class="floating-icon" id="communityIcon">
+        <a href="https://chat.whatsapp.com/F9Xg4seEGmrKUqXfCaoiOG" target="_blank">
+            <span>Join our Community</span>
+        </a>
+    </div>
+
+    <div class="floating-icon" id="visitorIcon">
+        <span><span id="visitorCount">0</span> Views</span>
+    </div>
+
+    <!-- Push Notification -->
+    <div class="notification" id="donationNotification">
+        <img src="donaton.jpg" onerror="this.src='donaton.jpg'" alt="Donation" class="notification-image">
+        <div class="notification-text">
+            <p>PLEASE DONATE SOME MONEY AT LEAST RS 10 FOR THE WEBSITE COST AND EDUCATION.</p>
+            <p>कृपया वेबसाइट लागत और शिक्षा के लिए कम से कम 10 रुपये का दान करें।</p>
+        </div>
+        <a href="https://razorpay.me/@ahmedsireducation" class="notification-link" target="_blank"></a>
+        <span class="close-btn" id="closeNotification">&times;</span>
+    </div>
+
+    <!-- Footer Section - Copied from GALLERY.HTML -->
+    <footer id="footer" class="bg-darkBg py-6 text-center text-gray-300 mt-12 dark:bg-darkBg dark:text-gray-400">
+        <div class="container mx-auto px-4">
+            <div class="text-sm">
+                <p>&copy; <span>Copyright</span> <strong class="px-1 text-primary">Uzair Ahmed B.A.(hons) Student, MGKVP</strong> <span>All Rights Reserved</span></p>
+            </div>
+            <div class="mt-2 text-xs">
+                Designed by <a href="https://uzairb2b.blogspot.com/" class="text-primary hover:underline">Uzair Ahmed</a> Distributed by <a href="https://www.instagram.com/uzairvibes" class="text-primary hover:underline">Uzair B2B Services</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle functionality - Copied from GALLERY.HTML
+        document.addEventListener("DOMContentLoaded", function () {
+            const themeToggle = document.getElementById('themeToggle');
+            const htmlTag = document.documentElement;
+
+            // Set initial theme based on localStorage or default to light
+            const currentTheme = localStorage.getItem('theme');
+            if (currentTheme) {
+                htmlTag.classList.remove('light', 'dark');
+                htmlTag.classList.add(currentTheme);
+                themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+            } else {
+                htmlTag.classList.add('light'); // Default to light theme
+                themeToggle.textContent = '🌙';
+            }
+
+            themeToggle.addEventListener('click', () => {
+                if (htmlTag.classList.contains('light')) {
+                    htmlTag.classList.remove('light');
+                    htmlTag.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                    themeToggle.textContent = '☀️';
+                } else {
+                    htmlTag.classList.remove('dark');
+                    htmlTag.classList.add('light');
+                    localStorage.setItem('theme', 'light');
+                    themeToggle.textContent = '🌙';
+                }
+            });
+
+            // Existing JavaScript functionality
+            document.getElementById('startJourneyBtn').addEventListener('click', function() {
+                window.location.href = 'https://sites.google.com/view/mgkvpmasscom/home-page';
+            });
+
+            document.getElementById('fillFormIcon').addEventListener('click', function() {
+                window.open('https://forms.gle/yAedfxNdszxQjKif7', '_blank');
+            });
+
+            // Visitor counter animation - FIXED FOR SMOOTHNESS
+            let startTimestamp;
+            const countTo = 8000; // Example visitor count
+            const duration = 2000; // milliseconds (2 seconds) for the animation
+            const counterElement = document.getElementById('visitorCount');
+
+            function updateCounter(timestamp) {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const elapsed = timestamp - startTimestamp;
+                const progress = Math.min(elapsed / duration, 1); // Progress from 0 to 1
+
+                const currentCount = Math.floor(progress * countTo); // Calculate current count based on progress
+                counterElement.textContent = currentCount.toLocaleString();
+
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counterElement.textContent = countTo.toLocaleString(); // Ensure it ends exactly at countTo
+                }
+            }
+            requestAnimationFrame(updateCounter); // Start the animation
+
+            // Make floating icons draggable
+            function makeDraggable(icon) {
+                let isDragging = false;
+                let offsetX, offsetY;
+
+                // For touch devices
+                icon.addEventListener('touchstart', function(e) {
+                    isDragging = true;
+                    icon.classList.add('draggable');
+                    const rect = icon.getBoundingClientRect();
+                    offsetX = e.touches[0].clientX - rect.left;
+                    offsetY = e.touches[0].clientY - rect.top;
+                    e.preventDefault(); // Prevent scrolling while dragging
+                }, { passive: false }); // Use passive: false to allow preventDefault
+
+                document.addEventListener('touchmove', function(e) {
+                    if (!isDragging) return;
+                    icon.style.left = (e.touches[0].clientX - offsetX) + 'px';
+                    icon.style.top = (e.touches[0].clientY - offsetY) + 'px';
+                }, { passive: false }); // Use passive: false to allow preventDefault
+
+                document.addEventListener('touchend', function() {
+                    isDragging = false;
+                    icon.classList.remove('draggable');
+                });
+
+                // For mouse devices
+                icon.addEventListener('mousedown', function(e) {
+                    isDragging = true;
+                    icon.classList.add('draggable');
+                    const rect = icon.getBoundingClientRect();
+                    offsetX = e.clientX - rect.left;
+                    offsetY = e.clientY - rect.top;
+                    e.preventDefault(); // Prevent default drag behavior
+                });
+
+                document.addEventListener('mousemove', function(e) {
+                    if (!isDragging) return;
+                    icon.style.left = (e.clientX - offsetX) + 'px';
+                    icon.style.top = (e.clientY - offsetY) + 'px';
+                });
+
+                document.addEventListener('mouseup', function() {
+                    isDragging = false;
+                    icon.classList.remove('draggable');
+                });
+
+                // Prevent default drag for images/links within draggable elements
+                icon.addEventListener('dragstart', function(e) {
+                    e.preventDefault();
+                });
+            }
+
+            makeDraggable(document.getElementById('fillFormIcon'));
+            makeDraggable(document.getElementById('communityIcon'));
+            makeDraggable(document.getElementById('visitorIcon'));
+
+            // Donation notification close button functionality
+            document.getElementById('closeNotification').addEventListener('click', function(e) {
+                e.stopPropagation(); // Prevent click from bubbling to the link
+                document.getElementById('donationNotification').style.display = 'none';
+            });
+
+            // Make entire notification clickable
+            document.getElementById('donationNotification').addEventListener('click', function() {
+                window.open('https://razorpay.me/@ahmedsireducation', '_blank');
+            });
+        });
+    </script>
+</body>
+</html>
