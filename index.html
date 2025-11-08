@@ -1,10 +1,223 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to the Meta Universe of Education</title>
-    <link rel="stylesheet" href="styles.css">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Notification Styles */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #f8f400;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+    width: 350px;
+}
+
+.notification-image {
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+}
+
+.notification-text {
+    flex-grow: 1;
+}
+
+.notification-link {
+    display: none;
+}
+
+.close-btn {
+    color: rgb(232, 74, 74);
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.close-btn:hover {
+    color: darkred;
+}
+
+/* Add other existing CSS here */
+
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #dbdbdb;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(6, 4, 4, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.donation-img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.container {
+    text-align: center;
+    max-width: 800px;
+    padding: 20px;
+    background: rgb(51, 0, 87);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    margin-bottom: 20px;
+    overflow: auto;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #ffd900;
+}
+
+p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #ffd900;
+    color: #000000;
+    box-shadow: 0 0 10px rgba(255, 47, 0, 0.825);
+    border: none;
+    padding: 15px 30px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #ffffff;
+    transform: scale(1.06);
+}
+
+.glow-button {
+    box-shadow: 0 0 20px #f3d702, 0 0 40px #00e6e6, 0 0 60px #00e6e6;
+}
+
+.glow-button:hover {
+    box-shadow: 0 0 25px #d4a200, 0 0 50px #00b3b3, 0 0 75px #00b3b3;
+}
+
+.floating-icon {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    background-color: #6c0097;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(255, 34, 0, 0.825);
+    transition: background-color 0.3s;
+    text-align: center;
+    padding: 10px;
+    user-select: none;
+    -webkit-user-drag: none;
+    margin: 10px;
+}
+
+.floating-icon span, .floating-icon a span {
+    color: #ffffff;
+    font-size: 15px;
+    text-align: center;
+    white-space: normal;
+}
+
+.floating-icon:hover {
+    background-color: #ff0000;
+ box-shadow: 0 0 10px rgba(187, 0, 255, 0.825);
+}
+
+body .draggable {
+    cursor: move;
+}
+
+@media (max-width: 600px) {
+    .logo {
+        width: 100px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+
+    .floating-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .floating-icon span, .floating-icon a span {
+        font-size: 8px;
+    }
+}
+</style>
 </head>
 <body>
     <div class="container">
@@ -12,8 +225,8 @@
             <img src="20250125_115304.png" alt="UZAIR B2B LOGO Logo" class="logo">
         </a>
         <h1>Welcome Students to Education Simplified</h1>
-        <p>If you want to improve your skills or prepare for competitive exams like IIMC, UPSC, CAT, and more, <strong>Uzair Sir</strong> offers free and affordable solutions just for you. Whether you need study materials, college notes, or guidance, we have everything you need to succeed. In addition to education, I’ve also started my own restaurant, specially designed for hostelers! If you’re tired of mess food and craving something delicious, you can order tasty meals from my restaurant at amazing discounts. That’s not all! If you’re looking to show your college spirit, I’ve created an online unofficial college clothing store. You’ll find t-shirts, hoodies, and other cool merch to showcase your pride.</p>
-        <p>अगर आप अपने स्किल्स को बेहतर करना चाहते हैं या आईआईएमसी, यूपीएससी, कैट जैसे प्रतियोगी परीक्षाओं की तैयारी कर रहे हैं, तो उज़ैर सर आपके लिए एक फ्री और किफ़ायती समाधान लेकर आए हैं। चाहे आपको स्टडी मटीरियल चाहिए या कॉलेज नोट्स, यहाँ सब कुछ मिलेगा। इसके साथ ही, मैंने खासतौर पर हॉस्टलर्स के लिए अपना रेस्टोरेंट भी शुरू किया है। अगर आप मेस के खाने से बोर हो चुके हैं और कुछ स्वादिष्ट खाना चाहते हैं, तो मेरे रेस्टोरेंट से डिलीशियस मील्स ऑर्डर करें और ढेर सारे डिस्काउंट पाएं। और हां, अगर आप अपने कॉलेज प्राइड को दिखाना चाहते हैं, तो मैंने एक ऑनलाइन अनऑफिशियल कॉलेज क्लोथिंग स्टोर भी शुरू किया है। यहां आपको टी-शर्ट, हुडीज़ और बहुत कुछ मिलेगा। पढ़ाई, खाना और कॉलेज प्राइड—सबकुछ एक ही जगह पर। अपनी कॉलेज लाइफ को शानदार बनाएं। नीचे दिए लिंक पर क्लिक करें और देखें!</p>
+        <p><b>Welcome to Education Simplified by Uzair Bhaiya, Uzair Sir, and Team!</b> We’re dedicated to making learning simple and accessible for everyone by providing <b>free and affordable resources</b> for MGKVP students and learners across departments. Here, you’ll find <b>notes for Journalism, MBA Management, and BCA</b>, <b>previous year question papers</b>, and <b>project templates</b> like documentaries and reports. We also help you <b>learn valuable skills</b> in writing, designing, web development, and AI — all at minimal or no cost. Our platform offers <b>study materials for UPSC, SSC, RBI, CUET PG, and more</b>, along with a <b>Study Library</b> filled with relevant books and a <b>Video-Seeking Platform</b> for visual learning. You can explore our <b>custom AI-powered tools</b> to generate content, format notes, and <b>save them as PDFs or DOCs</b>, even in landscape mode. If you find this initiative helpful and wish to support our mission, please consider <b>donating just ₹50</b> through the Razorpay popup below — your support keeps <b>Education Simplified free for every student.</b></p>
+        <p><b>एजुकेशन सिंप्लिफाइड में आपका स्वागत है — उज़ैर भैया, उज़ैर सर और टीम की ओर से!</b> हमारा उद्देश्य है सीखने की प्रक्रिया को सरल और सभी के लिए सुलभ बनाना। हम <b>मुफ़्त और किफायती शैक्षणिक संसाधन</b> प्रदान करते हैं जो MGKVP के छात्रों और अन्य विभागों के विद्यार्थियों के लिए उपयोगी हैं। यहाँ आपको <b>जर्नलिज़्म, MBA मैनेजमेंट और BCA</b> के <b>नोट्स</b>, <b>पिछले वर्षों के प्रश्न पत्र</b> और <b>प्रोजेक्ट टेम्पलेट्स</b> जैसे डॉक्यूमेंट्री और रिपोर्ट्स मिलेंगे। हम आपको <b>लेखन, डिजाइनिंग, वेब डेवलपमेंट और AI</b> जैसी <b>जरूरी स्किल्स</b> भी सिखाते हैं — वो भी बहुत कम या बिना किसी शुल्क के। हमारा प्लेटफ़ॉर्म <b>UPSC, SSC, RBI, CUET PG</b> और अन्य प्रतियोगी परीक्षाओं के लिए भी <b>अध्ययन सामग्री</b> प्रदान करता है। इसके अलावा हमारे पास एक <b>स्टडी लाइब्रेरी</b> है जिसमें <b>जरूरी किताबें</b> शामिल हैं और एक <b>वीडियो-सीकिंग प्लेटफ़ॉर्म</b> भी है जिससे आप विज़ुअल लर्निंग कर सकते हैं। आप हमारे <b>AI-संचालित टूल्स</b> का उपयोग करके अपनी सामग्री तैयार कर सकते हैं, नोट्स को फॉर्मेट कर सकते हैं और उन्हें <b>PDF या DOC</b> के रूप में सेव कर सकते हैं — यहाँ तक कि <b>लैंडस्केप मोड</b> में भी। अगर आपको हमारा यह प्रयास उपयोगी लगे और आप हमारे मिशन का समर्थन करना चाहते हैं, तो कृपया <b>सिर्फ़ ₹50</b> का <b>दान Razorpay पॉपअप</b> के माध्यम से करें — आपका सहयोग <b>Education Simplified</b> को हर छात्र के लिए <b>मुफ़्त बनाए रखने</b> में मदद करता है।</p>
         <button id="startJourneyBtn">Start Your Journey</button>
     </div>
 
@@ -41,7 +254,97 @@
         <a href="https://razorpay.me/@ahmedsireducation" class="notification-link" target="_blank"></a>
         <span class="close-btn" id="closeNotification">&times;</span>
     </div>
-<script src="script.js"></script>
+<script>
+    // Existing JavaScript functionality
+document.getElementById('startJourneyBtn').addEventListener('click', function() {
+    window.location.href = 'https://sites.google.com/view/mgkvpmasscom/home-page';
+});
+
+document.getElementById('fillFormIcon').addEventListener('click', function() {
+    window.open('https://docs.google.com/forms/d/e/1FAIpQLSdzA2gaJ9mEVTTGaaJpSD3Xh1XzDyYuJGWx39lQJoq-LalSqg/viewform?usp=sf_link', '_blank');
+});
+
+// Visitor counter animation
+let count = 0;
+const countTo = 8000; // Example visitor count
+const counterElement = document.getElementById('visitorCount');
+
+function updateCounter() {
+    if (count < countTo) {
+        count++;
+        counterElement.textContent = count.toLocaleString();
+        requestAnimationFrame(updateCounter);
+    }
+}
+
+requestAnimationFrame(updateCounter);
+
+// Make floating icons draggable
+function makeDraggable(icon) {
+    icon.addEventListener('touchstart', function(e) {
+        let shiftX = e.touches[0].clientX - icon.getBoundingClientRect().left;
+        let shiftY = e.touches[0].clientY - icon.getBoundingClientRect().top;
+
+        function moveAt(pageX, pageY) {
+            icon.style.left = pageX - shiftX + 'px';
+            icon.style.top = pageY - shiftY + 'px';
+        }
+
+        function onTouchMove(e) {
+            moveAt(e.touches[0].pageX, e.touches[0].pageY);
+        }
+
+        document.addEventListener('touchmove', onTouchMove);
+
+        icon.addEventListener('touchend', function() {
+            document.removeEventListener('touchmove', onTouchMove);
+        });
+
+        icon.addEventListener('dragstart', function() {
+            return false;
+        });
+    });
+
+    icon.addEventListener('mousedown', function(e) {
+        icon.classList.add('draggable');
+        let shiftX = e.clientX - icon.getBoundingClientRect().left;
+        let shiftY = e.clientY - icon.getBoundingClientRect().top;
+
+        function moveAt(pageX, pageY) {
+            icon.style.left = pageX - shiftX + 'px';
+            icon.style.top = pageY - shiftY + 'px';
+        }
+
+        function onMouseMove(e) {
+            moveAt(e.pageX, e.pageY);
+        }
+
+        document.addEventListener('mousemove', onMouseMove);
+
+        icon.addEventListener('mouseup', function() {
+            document.removeEventListener('mousemove', onMouseMove);
+            icon.classList.remove('draggable');
+        });
+
+        icon.addEventListener('dragstart', function() {
+            return false;
+        });
+    });
+}
+
+makeDraggable(document.getElementById('fillFormIcon'));
+makeDraggable(document.getElementById('communityIcon'));
+makeDraggable(document.getElementById('visitorIcon'));
+
+// Donation notification close button functionality
+document.getElementById('closeNotification').addEventListener('click', function() {
+    document.getElementById('donationNotification').style.display = 'none';
+});
+
+document.querySelector('.notification-text').addEventListener('click', function() {
+    window.open('https://razorpay.me/@ahmedsireducation', '_blank');
+});
+</script>
 
 </body>
 </html>
